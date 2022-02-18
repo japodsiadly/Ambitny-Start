@@ -7,13 +7,13 @@ import java.util.Optional;
 
 class HelloService {
     static final String FALLBACK_NAME = "World";
-    static final Lang FALLBACK_LANG = new Lang(1L,"Hello", "en");
+    static final Lang FALLBACK_LANG = new Lang(1, "Hello", "en");
     private final Logger logger = LoggerFactory.getLogger(HelloService.class);
 
 
-    private LangRepository repository;
+    private final LangRepository repository;
 
-    HelloService(){
+    HelloService() {
         this(new LangRepository());
     }
 
@@ -21,18 +21,18 @@ class HelloService {
         this.repository = repository;
     }
 
-    String prepareGreeting(String name, String langId){
-        Long langIdNum;
+    String prepareGreeting(String name, String langId) {
+        Integer langIdNum;
 
-        try{
-            langIdNum = Optional.ofNullable(langId).map(Long::valueOf).orElse(FALLBACK_LANG.getId());
+        try {
+            langIdNum = Optional.ofNullable(langId).map(Integer::valueOf).orElse(FALLBACK_LANG.getId());
         } catch (NumberFormatException e) {
             logger.warn("Non-numeric language id used: " + langId);
             langIdNum = FALLBACK_LANG.getId();
         }
 
-        var welcomeMessage =  repository.findById(langIdNum).orElse(FALLBACK_LANG).getWelcomeMessage();
+        var welcomeMessage = repository.findById(langIdNum).orElse(FALLBACK_LANG).getWelcomeMessage();
         var nameToWelcome = Optional.ofNullable(name).orElse(FALLBACK_NAME);
-        return welcomeMessage + " " + nameToWelcome  + "!";
+        return welcomeMessage + " " + nameToWelcome + "!";
     }
 }
