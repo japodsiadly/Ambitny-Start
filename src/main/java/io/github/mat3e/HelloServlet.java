@@ -26,7 +26,7 @@ public class HelloServlet extends HttpServlet {
         this(new HelloService());
     }
 
-    HelloServlet(HelloService service){
+    HelloServlet(HelloService service) {
         this.service = service;
     }
 
