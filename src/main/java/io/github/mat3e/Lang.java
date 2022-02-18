@@ -15,8 +15,8 @@ class Lang {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private Integer id; // jest longiem, ale też i nullem
-    private String welcomeMessage;
-    private String languageCode;
+    private String welcomeMsg;
+    private String code;
 
     /**
      * Hibernate (JPA) needs it.
@@ -27,8 +27,8 @@ class Lang {
 
     public Lang(final Integer id, final String welcomeMessage, final String languageCode) {
         this.id = id;
-        this.welcomeMessage = welcomeMessage;
-        this.languageCode = languageCode;
+        this.welcomeMsg = welcomeMessage;
+        this.code = languageCode;
     }
 
     public Integer getId() {
@@ -36,18 +36,18 @@ class Lang {
     }
 
     public String getWelcomeMessage() {
-        return welcomeMessage;
+        return welcomeMsg;
     }
 
     public void setWelcomeMessage(final String welcomeMessage) {
-        this.welcomeMessage = welcomeMessage;
+        this.welcomeMsg = welcomeMessage;
     }
 
     public String getLanguageCode() {
-        return languageCode;
+        return code;
     }
 
     public void setLanguageCode(final String languageCode) {
-        this.languageCode = languageCode;
+        this.code = languageCode;
     }
 }
