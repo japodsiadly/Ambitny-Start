@@ -1,5 +1,7 @@
-package io.github.mat3e;
+package io.github.mat3e.hello;
 
+import io.github.mat3e.lang.Lang;
+import io.github.mat3e.lang.LangRepository;
 import org.junit.Test;
 
 import java.util.Optional;
@@ -69,7 +71,7 @@ public class HelloServiceTest {
         //given
         var mockRepository = new LangRepository(){
             @Override
-            Optional<Lang> findById(final Integer id) {
+            public Optional<Lang> findById(final Integer id) {
                 return Optional.empty();
             }
         };
@@ -79,13 +81,13 @@ public class HelloServiceTest {
         var result = SUT.prepareGreeting(null, "-1");
 
         //then
-        assertEquals(HelloService.FALLBACK_LANG.getWelcomeMessage() + " " + HelloService.FALLBACK_NAME + "!", result);
+        assertEquals(HelloService.FALLBACK_LANG.getWelcomeMsg() + " " + HelloService.FALLBACK_NAME + "!", result);
     }
 
     private LangRepository fallbackLangIdRepository() {
         return new LangRepository() {
             @Override
-            Optional<Lang> findById(final Integer id) {
+            public Optional<Lang> findById(final Integer id) {
                 if (id.equals(HelloService.FALLBACK_LANG.getId())) {
                     return Optional.of(new Lang(null, FALLBACK_ID_WELCOME, null));
                 }
@@ -97,7 +99,7 @@ public class HelloServiceTest {
     private LangRepository alwaysReturnHelloRepository() {
         return new LangRepository() {
             @Override
-            Optional<Lang> findById(final Integer id) {
+            public Optional<Lang> findById(final Integer id) {
                 return Optional.of(new Lang(null, WELCOME, null));
             }
         };

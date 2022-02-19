@@ -20,6 +20,7 @@
         <junit.version>4.12</junit.version>
         <slf4j.version>1.7.25</slf4j.version>
         <jetty.version>9.4.14.v20181114</jetty.version>
+        <jackson.version>2.9.8</jackson.version>
     </properties>
 
     <dependencies>
@@ -75,7 +76,7 @@
         </dependency>
 
 
-
+        <!-- bez tego wychodzą błędy :/ -->
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
@@ -86,6 +87,14 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.2</version>
         </dependency>
+
+        <!-- do Jsonów -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
