@@ -20,7 +20,7 @@ public class HelloServiceTest {
         var SUT = new HelloService(mockRepository);
 
         //when
-        var result = SUT.prepareGreeting(null,"-1");
+        var result = SUT.prepareGreeting(null,-1);
 
         //then
         assertEquals(WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
@@ -34,7 +34,7 @@ public class HelloServiceTest {
         String name = "test";
 
         //when
-        var result = SUT.prepareGreeting(name, "-1");
+        var result = SUT.prepareGreeting(name, -1);
 
         //then
         assertEquals(WELCOME + " " + name + "!", result);
@@ -53,18 +53,18 @@ public class HelloServiceTest {
         assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
     }
 
-    @Test
-    public void test_prepareGreeting_textLang_returnsGreetingWithFallbackIdLang() {
-        //given
-        var mockRepository = fallbackLangIdRepository();
-        var SUT = new HelloService(mockRepository);
-
-        //when
-        var result = SUT.prepareGreeting(null, "abc");
-
-        //then
-        assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
-    }
+//    @Test
+//    public void test_prepareGreeting_textLang_returnsGreetingWithFallbackIdLang() {
+//        //given
+//        var mockRepository = fallbackLangIdRepository();
+//        var SUT = new HelloService(mockRepository);
+//
+//        //when
+//        var result = SUT.prepareGreeting(null, "abc");
+//
+//        //then
+//        assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
+//    }
 
     @Test
     public void test_prepareGreeting_nonExistingLang_returnsGreetingWithFallbackLang() {
@@ -78,7 +78,7 @@ public class HelloServiceTest {
         var SUT = new HelloService(mockRepository);
 
         //when
-        var result = SUT.prepareGreeting(null, "-1");
+        var result = SUT.prepareGreeting(null, -1);
 
         //then
         assertEquals(HelloService.FALLBACK_LANG.getWelcomeMsg() + " " + HelloService.FALLBACK_NAME + "!", result);
