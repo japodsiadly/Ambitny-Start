@@ -1,4 +1,4 @@
-package io.github.mat3e;
+package io.github.mat3e.lang;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "languages")
 // POJO - Plain Old Java Object - prywatne pola z geterami i seterami - Struktura danych nie klasa
-class Lang {
+public class Lang {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
@@ -25,29 +25,29 @@ class Lang {
     public Lang() {
     }
 
-    public Lang(final Integer id, final String welcomeMessage, final String languageCode) {
+    public Lang(final Integer id, final String welcomeMsg, final String code) {
         this.id = id;
-        this.welcomeMsg = welcomeMessage;
-        this.code = languageCode;
+        this.welcomeMsg = welcomeMsg;
+        this.code = code;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getWelcomeMessage() {
+    public String getWelcomeMsg() {
         return welcomeMsg;
     }
 
-    public void setWelcomeMessage(final String welcomeMessage) {
-        this.welcomeMsg = welcomeMessage;
+    public void setWelcomeMsg(final String welcomeMsg) {
+        this.welcomeMsg = welcomeMsg;
     }
 
-    public String getLanguageCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setLanguageCode(final String languageCode) {
-        this.code = languageCode;
+    public void setCode(final String code) {
+        this.code = code;
     }
 }
