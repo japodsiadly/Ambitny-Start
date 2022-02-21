@@ -15,7 +15,7 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet {
     private final static String NAME_PARAM = "name";
     private final static String LANG_PARAM = "lang";
-    private final Logger logger = LoggerFactory.getLogger(LangServlet.class);
+    private final Logger logger = LoggerFactory.getLogger(HelloServlet.class);
 
     private final HelloService service;
 
